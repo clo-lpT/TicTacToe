@@ -16,8 +16,10 @@ function App() {
   }, []);
 
   useEffect(() => {
+    DrawGame();
     gameArray.map((item, index) => {
-      document.getElementById(index).innerHTML = item;
+      console.log('hihi',index,item)
+      // document.getElementById(index).innerHTML = "hi";
     })
   }, [gameArray]);
 
@@ -35,6 +37,7 @@ function App() {
       console.log(4);
       console.log(gameArray[`${position}`]);
     }
+    setGameArray(gameArray)
     console.log(gameArray)
   };
 
@@ -45,19 +48,19 @@ function App() {
         <table>
           <tbody>
             <tr>
-              <td id="1" value={"1"} onClick={() => drawUser(0)}></td>
-              <td id="2" value={gameArray[1]} onClick={() => drawUser(1)}></td>
-              <td id="3" value={gameArray[2]} onClick={() => drawUser(2)}></td>
+              <td id="1" onClick={() => drawUser(0)}></td>
+              <td id="2" onClick={() => drawUser(1)}></td>
+              <td id="3" onClick={() => drawUser(2)}></td>
             </tr>
             <tr>
-              <td id="4" value={gameArray[3]} onClick={() => drawUser(3)}></td>
-              <td id="5" value={gameArray[4]} onClick={() => drawUser(4)}></td>
-              <td id="6" value={gameArray[5]} onClick={() => drawUser(5)}></td>
+              <td id="4" onClick={() => drawUser(3)}></td>
+              <td id="5" onClick={() => drawUser(4)}></td>
+              <td id="6" onClick={() => drawUser(5)}></td>
             </tr>
             <tr>
-              <td id="7" value={gameArray[6]} onClick={() => drawUser(6)}></td>
-              <td id="8" value={gameArray[7]} onClick={() => drawUser(7)}></td>
-              <td id="9" value={gameArray[8]} onClick={() => drawUser(8)}></td>
+              <td id="7" onClick={() => drawUser(6)}></td>
+              <td id="8" onClick={() => drawUser(7)}></td>
+              <td id="9" onClick={() => drawUser(8)}></td>
             </tr>
           </tbody>
         </table>
