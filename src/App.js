@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 function App() {
   //유저가 O, X인지 구분
@@ -16,29 +16,32 @@ function App() {
   }, []);
 
   useEffect(() => {
-    DrawGame();
+    console.log('호출되냐')
     gameArray.map((item, index) => {
-      console.log('hihi',index,item)
-      // document.getElementById(index).innerHTML = "hi";
+      console.log('hihi', index, item)
+      document.getElementById(1).innerHTML = item;
     })
+    DrawGame();
   }, [gameArray]);
 
   //칸을 눌렀을때 유저 표시가 나타남
   const drawUser = (position) => {
+    console.log('처음', gameArray)
     console.log(gameArray[`${position}`]);
     if (gameArray[`${position}`] === null) {
       console.log(2);
       setUser(!user);
       console.log(3);
       user === true
-        ? gameArray[`${position}`]="O"
-        : gameArray[`${position}`] = "X";
+        ? setGameArray(...gameArray, (gameArray[`${position}`] = "O"))
+        : setGameArray(...gameArray, (gameArray[`${position}`] = "X"));
+      console.log(gameArray,'gameArray')
     } else {
       console.log(4);
       console.log(gameArray[`${position}`]);
     }
     setGameArray(gameArray)
-    console.log(gameArray)
+    console.log(gameArray, "끝");
   };
 
   const DrawGame = () => {
@@ -70,9 +73,7 @@ function App() {
 
   return (
     <div className="App">
-      {
-        <DrawGame />
-      }
+      <DrawGame />
     </div>
   );
 }
